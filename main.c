@@ -35,7 +35,7 @@ int main()
     Texture2D backgroundTexture = LoadTexture("fundojogo.png");
     Texture2D menuTexture = LoadTexture("menu.png");
     Texture2D rulesTexture = LoadTexture("rules2.0.png");
-    Texture2D lostTexture = LoadTexture("lost2.0.png");
+    Texture2D lostTexture = LoadTexture("lost.png");
     
 
     
@@ -313,8 +313,8 @@ int main()
                 ClearBackground(GRAY);
                 DrawTextureEx(lostTexture, (Vector2){200,7},0,0.75, RAYWHITE);
                 if (IsKeyDown(KEY_SPACE) == true){
-                    EndDrawing();
-                    CloseWindow();
+                    EndDrawing(); 
+                    mode = INITMENU;
                 }
                 EndDrawing();
                 break;
