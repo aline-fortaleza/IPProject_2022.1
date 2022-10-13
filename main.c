@@ -14,8 +14,9 @@
 
 
 #define INITMENU 10
-#define GAME 11
-#define UPGRADE 12
+#define RULES 11
+#define GAME 12
+#define UPGRADE 13
 
 int main()
 {
@@ -34,6 +35,7 @@ int main()
     Texture2D menuTexture = LoadTexture("menu.png");
     Texture2D rulesTexture = LoadTexture("rules.png");
     Texture2D lostTexture = LoadTexture("lost.png");
+    
 
     
 
@@ -153,9 +155,11 @@ int main()
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
     bool PRESS_UP = false;
     bool PRESS_DOWN = false; 
+    int mode = INITMENU; 
+      
     while (!WindowShouldClose()){    
         
-        switch(gameMode){
+        switch(mode){
             case INITMENU:
                 if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
                     
@@ -175,6 +179,23 @@ int main()
                     PRESS_DOWN = false;
                 }
 
+                if(IsKeyDown(KEY_ENTER) == true && selectorPosition.y == 550){
+                    EndDrawing();
+                    mode = GAME;
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorPosition.y == 650){
+                    EndDrawing();
+                    mode = RULES;
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorPosition.y == 750){
+                    EndDrawing();
+                    CloseWindow();
+
+                }
+
+
                 BeginDrawing();
                 ClearBackground(GRAY);
                 DrawTextureEx(menuTexture, (Vector2){200,7},0,0.75, RAYWHITE);
@@ -187,6 +208,19 @@ int main()
                 EndDrawing();
 
                 break;
+
+            case RULES:
+                if(IsKeyDown(KEY_ENTER) == true) {
+                    EndDrawing();
+                    mode = INITMENU;
+                }
+                BeginDrawing();
+                ClearBackground(GRAY);
+                DrawTextureEx(rulesTexture, (Vector2){200,7},0,0.75, RAYWHITE);
+                EndDrawing();
+
+
+            break;
             case GAME:
                 // sprintf(playerPosX, "%d", player.posX);
                 // sprintf(playerPosY, "%d", player.posY);
