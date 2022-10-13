@@ -35,6 +35,9 @@ int main()
     Texture2D rulesTexture = LoadTexture("rules.png");
     Texture2D lostTexture = LoadTexture("lost.png");
 
+    
+
+
 
 
     Rectangle exemplo;
@@ -125,21 +128,61 @@ int main()
     cam.rotation = 0;
     cam.zoom = 1;
     
+    /* int pos1_select_x = (menuTexture.width/2) +150; 
+    int pos1_select_y = 550;
+    
+     int pos2_3_select_x = (menuTexture.width/2) +200;
+    int pos2_select_y = 600;
+    int pos3_select_y = 500;
     
     
+
+
+
+    Vector2 pos1_select = { (pos1_select_x), pos1_select_y};
+    Vector2 pos2_select = {pos2_3_select_x, pos2_select_y};
+    Vector2 pos3_select = {pos2_3_select_x, pos3_select_y}; */
+    
+    Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
+    bool PRESS_UP = false;
+    bool PRESS_DOWN = false; 
     while (!WindowShouldClose()){    
         
-        switch(menuMode){
+        switch(gameMode){
             case INITMENU:
+                if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
+                    
+                    selectorPosition.y -= 100;
+                    PRESS_UP = true;
+                       
+                }
+                if(IsKeyDown(KEY_UP) == false) {
+                    PRESS_UP = false;
+                }
+                if (IsKeyDown(KEY_DOWN) == true && selectorPosition.y != 750 && PRESS_DOWN == false) {
+                     
+                   selectorPosition.y += 100;
+                   PRESS_DOWN = true;
+                }
+                if(IsKeyDown(KEY_DOWN) == false) {
+                    PRESS_DOWN = false;
+                }
+
                 BeginDrawing();
                 ClearBackground(GRAY);
-                DrawTextureEx(menuTexture, (Vector2){(screenWidth/2),0},0,0.75, GRAY);
+                DrawTextureEx(menuTexture, (Vector2){200,7},0,0.75, RAYWHITE);
+                DrawText("Play", (menuTexture.width/2) -150 , 500, 100, WHITE);
+                DrawText("Rules", (menuTexture.width/2) -180 , 600, 100, WHITE);
+                DrawText("Exit", (menuTexture.width/2) -145 , 700, 100, WHITE);
+                DrawCircleV(selectorPosition, 10, GOLD);
+                
+                
                 EndDrawing();
 
                 break;
             case GAME:
-                sprintf(playerPosX, "%d", player.posX);
-                sprintf(playerPosY, "%d", player.posY);
+                // sprintf(playerPosX, "%d", player.posX);
+                // sprintf(playerPosY, "%d", player.posY);
                 sprintf(playerlife, "%d", player.life);
                 player.isMoving = false;
                 mainTimer+=GetFrameTime();
