@@ -239,9 +239,9 @@ int main()
                 BeginMode2D(cam);
                 ClearBackground(LIME);
                 DrawTextureEx (backgroundTexture, (Vector2) {0,0},0, 1.5, RAYWHITE);
-                DrawText(playerlife, 600, 600, 30, PINK);
-                DrawText(playerPosX, 600, 300, 30, RED);
-                DrawText(playerPosY, 700, 400, 30, RED);
+                //DrawText(playerlife, 600, 600, 30, PINK);
+                //DrawText(playerPosX, 600, 300, 30, RED);
+                //DrawText(playerPosY, 700, 400, 30, RED);
                 
                 
                 
@@ -255,6 +255,7 @@ int main()
                 for(int i=0;i<Numbercars;i++){
                     DrawCar(cars[i], carTexture);
                 }
+                DrawLineEx ((Vector2){player.posX - 30, player.posY - 10}, (Vector2){(player.posX - 30) + (player.life * 2), player.posY - 10}, 10, GOLD); 
                 if(player.life<=0){
                     EndDrawing();
                     mode = LOST; 
