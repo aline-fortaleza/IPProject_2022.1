@@ -239,6 +239,12 @@ int main()
                 
                 
                 movePlayer(&player, walls_player);
+
+                if(player.heading == HEADING_LEFT) {
+                    playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
+                } else if (player.heading == HEADING_RIGHT) {
+                    playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
+                }
                 
                 BeginDrawing();
                 BeginMode2D(cam);
