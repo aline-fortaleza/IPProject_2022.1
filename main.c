@@ -44,7 +44,7 @@ int main()
     exemplo.y = 0;
     exemplo.height = 10;
     exemplo.y = 10;
-    
+
     int Wave = 1;
     int Numbercars = 4 * Wave;
     Car *cars;
@@ -65,6 +65,7 @@ int main()
     
     
     int gameMode = GAME;
+    int menuMode = INITMENU;
 
    Rectangle walls[4];
     walls[0].x = 00;
@@ -137,7 +138,10 @@ int main()
         
         switch(gameMode){
             case INITMENU:
-                DrawTextureEx(menuTexture, (Vector2){0,0},0,1, GRAY);
+                BeginDrawing();
+                ClearBackground(GRAY);
+                DrawTextureEx(menuTexture, (Vector2){(screenWidth/2),0},0,0.75, GRAY);
+                EndDrawing();
 
                 break;
             case GAME:
@@ -186,7 +190,7 @@ int main()
                 
                 BeginDrawing();
                 BeginMode2D(cam);
-                ClearBackground(RAYWHITE);
+                ClearBackground(LIME);
                 DrawTextureEx (backgroundTexture, (Vector2) {0,0},0, 1.5, RAYWHITE);
                 DrawText(playerlife, 600, 600, 30, PINK);
                 DrawText(playerPosX, 600, 300, 30, RED);
@@ -196,15 +200,13 @@ int main()
                 
                 
                 DrawTextureEx(spikeTexture, (Vector2){700, 700}, 0, 0.4, RAYWHITE);
-                for(int i=0;i<4; i++){
+                for(int i=0;i<4;i++){
                     DrawRectangleRec(walls[i], BLACK);
-                    DrawRectangleRec(walls_player[i], RED);
+                    DrawRectangleRec(walls_player[i], GRAY);
                 }
                 DrawTexture(playerTexture, player.posX, player.posY, RAYWHITE);
                 for(int i=0;i<Numbercars;i++){
-                    //if(cars[i].life<200){
-                        DrawCar(cars[i], carTexture);
-                    //}
+                    DrawCar(cars[i], carTexture);
                 }
                 if(player.life<=0){
                     DrawText("morreu", 500, 500, 30, BLACK);
@@ -240,6 +242,7 @@ int main()
 
                 sprintf(CarsDestorided, "%d", Wave);
                 DrawText(CarsDestorided, 200, 400 , 60, PURPLE);
+
 
                 MasterUpdateCars(cars, Numbercars, walls, player, &mainTimer);
 
