@@ -60,6 +60,7 @@ int main()
     
     
     int gameMode = GAME;
+    int menuMode = INITMENU;
 
    Rectangle walls[4];
     walls[0].x = 00;
@@ -128,9 +129,12 @@ int main()
     
     while (!WindowShouldClose()){    
         
-        switch(gameMode){
+        switch(menuMode){
             case INITMENU:
-                DrawTextureEx(menuTexture, (Vector2){0,0},0,1, GRAY);
+                BeginDrawing();
+                ClearBackground(GRAY);
+                DrawTextureEx(menuTexture, (Vector2){(screenWidth/2),0},0,0.75, GRAY);
+                EndDrawing();
 
                 break;
             case GAME:
@@ -179,7 +183,7 @@ int main()
                 
                 BeginDrawing();
                 BeginMode2D(cam);
-                ClearBackground(RAYWHITE);
+                ClearBackground(LIME);
                 DrawTextureEx (backgroundTexture, (Vector2) {0,0},0, 1.5, RAYWHITE);
                 DrawText(playerlife, 600, 600, 30, PINK);
                 DrawText(playerPosX, 600, 300, 30, RED);
@@ -191,7 +195,7 @@ int main()
                 DrawTextureEx(spikeTexture, (Vector2){700, 700}, 0, 0.4, RAYWHITE);
                 for(int i=0;i<4;i++){
                     DrawRectangleRec(walls[i], BLACK);
-                    DrawRectangleRec(walls_player[i], RED);
+                    DrawRectangleRec(walls_player[i], GRAY);
                 }
                 DrawTexture(playerTexture, player.posX, player.posY, RAYWHITE);
                 for(int i=0;i<4;i++){
