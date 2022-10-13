@@ -17,7 +17,7 @@ bool verifyPlayerSpikesCollision(Player player, Spikes *spikes, int numberSpikes
 bool verifyPlayerCarsCollision(Player player, Car *cars, int numberCars){
     bool hit = false;
     for(int i=0;i<numberCars;i++){
-        if(CheckCollisionCircleRec((Vector2){cars[i].posX, cars[i].posY}, 30, player.playerCollision)==true && cars[i].life>0){
+        if(CheckCollisionCircleRec((Vector2){cars[i].posX, cars[i].posY}, 30, player.playerCollision)==true && cars[i].life<100){
             hit = true;
         }
     }
