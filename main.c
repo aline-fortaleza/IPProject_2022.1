@@ -13,6 +13,7 @@
 
 
 
+
 #define INITMENU 10
 #define RULES 11
 #define GAME 12
@@ -276,7 +277,8 @@ int main()
                         }else{
                             cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }  
-                    } 
+                    }
+                    carsDestroyed = 0; 
                 }
 
                 for(int j=0; j< Numbercars; j++){
