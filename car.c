@@ -40,7 +40,7 @@ void DrawCar(Car car, Texture2D carTexture){
     destination.height = 45;
     destination.width = 65;
     Vector2 origin = (Vector2){30, 30};
-    if(car.life>0){
+    if(car.life>0  && car.life < 200){
         DrawTexturePro(carTexture, source, destination, origin, car.angle, RAYWHITE);
     }
    
@@ -99,6 +99,8 @@ void MasterUpdateCars(Car *cars, int numberCars, Rectangle walls[], Player playe
     }
     
 }
+
+
 
 
 
