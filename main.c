@@ -33,7 +33,7 @@ int main()
     Texture2D playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
     Texture2D backgroundTexture = LoadTexture("fundojogo.png");
     Texture2D menuTexture = LoadTexture("menu.png");
-    Texture2D rulesTexture = LoadTexture("rules.png");
+    Texture2D rulesTexture = LoadTexture("rules2.0.png");
     Texture2D lostTexture = LoadTexture("lost.png");
     
 
@@ -69,8 +69,7 @@ int main()
     Player player = (Player){400, 400, 0, 50, playerCollision, exemplo, 5, 5, false, true, true, 2};
     
     
-    int gameMode = GAME;
-    int menuMode = INITMENU;
+    
 
    Rectangle walls[4];
     walls[0].x = 00;
@@ -210,7 +209,7 @@ int main()
                 break;
 
             case RULES:
-                if(IsKeyDown(KEY_ENTER) == true) {
+                if(IsKeyDown(KEY_SPACE) == true) {
                     EndDrawing();
                     mode = INITMENU;
                 }
