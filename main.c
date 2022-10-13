@@ -136,20 +136,7 @@ int main()
     cam.rotation = 0;
     cam.zoom = 1;
     
-    /* int pos1_select_x = (menuTexture.width/2) +150; 
-    int pos1_select_y = 550;
-    
-     int pos2_3_select_x = (menuTexture.width/2) +200;
-    int pos2_select_y = 600;
-    int pos3_select_y = 500;
-    
-    
 
-
-
-    Vector2 pos1_select = { (pos1_select_x), pos1_select_y};
-    Vector2 pos2_select = {pos2_3_select_x, pos2_select_y};
-    Vector2 pos3_select = {pos2_3_select_x, pos3_select_y}; */
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
     bool PRESS_UP = false;
@@ -235,24 +222,7 @@ int main()
                     player.invencibilityTime-=GetFrameTime();
                 }
 
-                // tentativa falha de barreira pro personagem não sair pelos cantos
-                /* if(player.posX < 220) {
-                    player.posX = 220;
-                    player.isMoving = false;
-                }
-                else if ((player.posX + playerCollision.width) > 1250) {
-                    player.posX = 1250 ;
-                    player.isMoving = false;
-                }
-
-                if(player.posY < 225) {
-                    player.posY = 225;
-                    player.isMoving = false;
-                }
-                else if ((player.posY + playerCollision.height) > 1245) {
-                    player.posY = 1245 ;
-                    player.isMoving = false;
-                } */ 
+                
 
 
 
