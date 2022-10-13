@@ -44,13 +44,18 @@ int main()
     exemplo.y = 0;
     exemplo.height = 10;
     exemplo.y = 10;
+    
+    int Wave = 1;
+    int Numbercars = 4 * Wave;
     Car *cars;
-    cars = malloc(sizeof(Car)*4);
-
-    cars[0] = (Car){25, 25, exemplo, 0, 5, 30, 5, AIMING, 0, false, false};
-    cars[1] = (Car){1500, 25, exemplo, 0, 5, 30, 5, AIMING, 0, false, false};
-    cars[2] = (Car){1000, 25, exemplo, 0, 5, 30, 5, AIMING, 0, false, false};
-    cars[3] = (Car){1500, 1000, exemplo, 0, 5, 30, 5, AIMING, 0, false, false};
+    cars = malloc(sizeof(Car)*Numbercars);
+    for(int i = 0; i < Numbercars; i++){
+        if(i % 2 == 0){
+        cars[i] = (Car){rand() % 1400 , 25, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+        }else{
+        cars[i] = (Car){rand() % 1400 , 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+        }  
+    }
     Rectangle playerCollision;
     playerCollision.x = 100;
     playerCollision.y = 100;
@@ -118,6 +123,8 @@ int main()
     char playerlife[5];
     char playerPosX[5];
     char playerPosY[5];
+    char CarsDestorided[5];
+    int carsDestroyed = 0; 
 
     Camera2D cam;
     cam.offset = (Vector2){GetScreenWidth()/2, GetScreenHeight()/2};
@@ -141,7 +148,7 @@ int main()
                 mainTimer+=GetFrameTime();
                 player.playerCollision.x = player.posX;
                 player.playerCollision.y = player.posY;
-                for(int i=0;i<4;i++){
+                for(int i=0;i<Numbercars;i++){
                     cars[i].timeCounter+=GetFrameTime();
                 }
                 if(verifyPlayerSpikesCollision(player, &spike, 1)==true){
@@ -189,23 +196,56 @@ int main()
                 
                 
                 DrawTextureEx(spikeTexture, (Vector2){700, 700}, 0, 0.4, RAYWHITE);
-                for(int i=0;i<4;i++){
+                for(int i=0;i<4; i++){
                     DrawRectangleRec(walls[i], BLACK);
                     DrawRectangleRec(walls_player[i], RED);
                 }
                 DrawTexture(playerTexture, player.posX, player.posY, RAYWHITE);
-                for(int i=0;i<4;i++){
-                    DrawCar(cars[i], carTexture);
+                for(int i=0;i<Numbercars;i++){
+                    //if(cars[i].life<200){
+                        DrawCar(cars[i], carTexture);
+                    //}
                 }
                 if(player.life<=0){
                     DrawText("morreu", 500, 500, 30, BLACK);
                 }
 
-                MasterUpdateCars(cars, 4, walls, player, &mainTimer);
+                for(int j=0; j< Numbercars; j++){
+                    if(cars[j].life > 0 && cars[j].life < 200){
+                        DrawRectangle(cars[j].posX-25, cars[j].posY-32, cars[j].life, 7, GREEN);
+                    }
+                }
 
-                applyCarDamage(&spike, cars, 4, 1);
+                //Conta a qnt de carros destruidos
+                for(int i = 0; i< Numbercars; i++){
+                    if(cars[i].life <=0){
+                        carsDestroyed ++;
+                        cars[i].life = 300;
+                    }
+                }
+                //Aumenta o Numero de carros a cada Wave
+                if(carsDestroyed == Numbercars){
+                    Wave +=1;
+                    Numbercars = 4 * Wave;
+                    cars = (Car *) realloc(cars, Numbercars * sizeof(Car));
+                    for(int i = 0; i < Numbercars; i++){
+                        if(i % 2 == 0){
+                        cars[i] = (Car){rand() % 1400 , 25, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                        }else{
+                        cars[i] = (Car){rand() % 1400 , 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                        }    
+                    }
+                    carsDestroyed = 0;
+                }
 
-                applyPlayerDamage(&player, cars, &spike, 4, 1);
+                sprintf(CarsDestorided, "%d", Wave);
+                DrawText(CarsDestorided, 200, 400 , 60, PURPLE);
+
+                MasterUpdateCars(cars, Numbercars, walls, player, &mainTimer);
+
+                applyCarDamage(&spike, cars, Numbercars, 1);
+
+                applyPlayerDamage(&player, cars, &spike, Numbercars, 1);
 
 
 
