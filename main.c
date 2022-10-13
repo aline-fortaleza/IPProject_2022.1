@@ -13,6 +13,7 @@
 
 
 
+
 #define INITMENU 10
 #define RULES 11
 #define GAME 12
@@ -57,9 +58,9 @@ int main()
     cars = malloc(sizeof(Car)*Numbercars);
     for(int i = 0; i < Numbercars; i++){
         if(i % 2 == 0){
-        cars[i] = (Car){rand() % 2250 , 25, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+        cars[i] = (Car){rand() % 2250 , 25, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
         }else{
-        cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+        cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
         }  
     }
     Rectangle playerCollision;
@@ -130,12 +131,14 @@ int main()
     char playerPosX[5];
     char playerPosY[5];
     char CarsDestorided[5];
+    char waveChar[10] = "WAVE:";
+    char waveNumber[3];
     int carsDestroyed = 0; 
 
     Camera2D cam;
     cam.offset = (Vector2){GetScreenWidth()/2, GetScreenHeight()/2};
     cam.rotation = 0;
-    cam.zoom = 1;
+    cam.zoom = 1.2;
     
 
     
@@ -212,6 +215,7 @@ int main()
             case GAME:
                 // sprintf(playerPosX, "%d", player.posX);
                 // sprintf(playerPosY, "%d", player.posY);
+                
                 sprintf(playerlife, "%d", player.life);
                 player.isMoving = false;
                 mainTimer+=GetFrameTime();
@@ -243,8 +247,9 @@ int main()
                 //DrawText(playerlife, 600, 600, 30, PINK);
                 //DrawText(playerPosX, 600, 300, 30, RED);
                 //DrawText(playerPosY, 700, 400, 30, RED);
-                
-                
+                sprintf(waveNumber, "%d", Wave);
+                DrawText(waveChar, 1125, 1125, 60, PINK);
+                DrawText(waveNumber, 1340, 1125, 60, PINK);
                 
                 
                 DrawTextureEx(spikeTexture, (Vector2){700, 700}, 0, 0.4, RAYWHITE);
@@ -264,14 +269,16 @@ int main()
                     Wave = 1;
                     player.life = 50;
                     Numbercars = 4;
+                    
                     cars = malloc(sizeof(Car)*Numbercars);
                     for(int i = 0; i < Numbercars; i++){
                         if(i % 2 == 0){
-                            cars[i] = (Car){rand() % 2250 , 25, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                            cars[i] = (Car){rand() % 2250 , 25, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }else{
-                            cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                            cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }  
-                    } 
+                    }
+                    carsDestroyed = 0; 
                 }
 
                 for(int j=0; j< Numbercars; j++){
@@ -299,16 +306,16 @@ int main()
                         cars[i] = (Car){rand() % 1400 , 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
                         }*/
                         if(i%4==0){
-                            cars[i] = (Car){rand() % 2250 , 25, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                            cars[i] = (Car){rand() % 2250 , 25, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }
                         else if((i+1)%4==0){
-                            cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                            cars[i] = (Car){rand() % 2250 , 2250, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }
                         else if((i+2)%4==0){
-                            cars[i] = (Car){0 , rand() % 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                            cars[i] = (Car){0 , rand() % 2250, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }
                         else{
-                            cars[i] = (Car){2250 , rand() % 2250, exemplo, 0, 5, 50, 5, AIMING, 0, false, false};
+                            cars[i] = (Car){2250 , rand() % 2250, exemplo, 0, 5, 70, 5, AIMING, 0, false, false};
                         }    
                     }
                     carsDestroyed = 0;

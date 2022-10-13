@@ -87,7 +87,7 @@ void MasterUpdateCars(Car *cars, int numberCars, Rectangle walls[], Player playe
             }
         }
     }
-    if(*mainTimer>15){
+    if(*mainTimer>10){
         for(int i=0;i<numberCars;i++){
             cars[i].speed+=2;
             cars[i].timeChangingAngle-=0.5;
