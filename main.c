@@ -17,6 +17,7 @@
 #define RULES 11
 #define GAME 12
 #define UPGRADE 13
+#define LOST 14
 
 int main()
 {
@@ -255,7 +256,8 @@ int main()
                     DrawCar(cars[i], carTexture);
                 }
                 if(player.life<=0){
-                    DrawText("morreu", 500, 500, 30, BLACK);
+                    EndDrawing();
+                    mode = LOST; 
                 }
 
                 for(int j=0; j< Numbercars; j++){
@@ -304,7 +306,17 @@ int main()
                 break;
             case UPGRADE:
                 //código da escolha do upgrade no final de cada wave
-            break;
+                break;
+            case LOST:
+                BeginDrawing();
+                ClearBackground(GRAY);
+                DrawTextureEx(lostTexture, (Vector2){200,7},0,0.75, RAYWHITE);
+                if (IsKeyDown(KEY_SPACE) == true){
+                    EndDrawing(); 
+                    mode = INITMENU;
+                }
+                EndDrawing();
+                break;
         }
 
         
