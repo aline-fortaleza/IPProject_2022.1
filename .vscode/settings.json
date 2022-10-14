@@ -10,6 +10,7 @@
 	},
 	"files.associations": {
 		"cmath": "c",
-		"raylib.h": "c"
+		"raylib.h": "c",
+		"animations.h": "c"
 	}
 }

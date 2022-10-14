@@ -32,6 +32,7 @@ int main()
     SetTargetFPS(60);
 
     Texture2D carTexture = LoadTexture("SportsRacingCar_0.png");
+    Texture2D carTextureDestroyed = LoadTexture("Assets/cardestroyed.png");
     Texture2D playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
     Texture2D backgroundTexture = LoadTexture("fundojogo.png");
     Texture2D menuTexture = LoadTexture("menu.png");
@@ -39,8 +40,31 @@ int main()
     Texture2D lostTexture = LoadTexture("lost.png");
     
 
-    
+    int frameCounter = 0;
+    int frames = 0;
+    Texture2D walkingDown[4];
+    walkingDown[0] = LoadTexture("Assets/CharacterSprites/PlayerIdleDown.png");
+    walkingDown[1] = LoadTexture("Assets/CharacterSprites/PlayerWalkingDown (1).png");
+    walkingDown[2] = LoadTexture("Assets/CharacterSprites/PlayerIdleDown.png");
+    walkingDown[3] = LoadTexture("Assets/CharacterSprites/PlayerWalkingDown (2).png");
 
+    Texture2D walkingUp[4];
+    walkingUp[0] = LoadTexture("Assets/CharacterSprites/PlayerIdleUp.png");
+    walkingUp[1] = LoadTexture("Assets/CharacterSprites/PlayerWalkingUp (1).png");
+    walkingUp[2] = LoadTexture("Assets/CharacterSprites/PlayerIdleUp.png");
+    walkingUp[3] = LoadTexture("Assets/CharacterSprites/PlayerWalkingUp (2).png");
+
+    Texture2D walkingLeft[4];
+    walkingLeft[0] = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
+    walkingLeft[1] = LoadTexture("Assets/CharacterSprites/PlayerWalkingLeft (1).png");
+    walkingLeft[2] = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
+    walkingLeft[3] = LoadTexture("Assets/CharacterSprites/PlayerWalkingLeft (2).png");
+
+    Texture2D walkingRight[4];
+    walkingRight[0] = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
+    walkingRight[1] = LoadTexture("Assets/CharacterSprites/PlayerWalkingRight (1).png");
+    walkingRight[2] = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
+    walkingRight[3] = LoadTexture("Assets/CharacterSprites/PlayerWalkingRight (2).png");
 
 
 
@@ -148,6 +172,11 @@ int main()
     int mode = INITMENU; 
       
     while (!WindowShouldClose()){    
+        frames++;
+        if(frames>24){
+        frames = 0;
+                    
+        }
         
         switch(mode){
             case INITMENU:
@@ -230,20 +259,30 @@ int main()
 
                 
 
-
+                
 
                 
                 
                 cam.target = (Vector2){player.posX, player.posY};
                 
                 
-                
                 movePlayer(&player, walls_player);
-
+                /*
                 if(player.heading == HEADING_LEFT) {
                     playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
                 } else if (player.heading == HEADING_RIGHT) {
                     playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
+                }*/
+                
+                player.frameCounter = mainTimer;
+                if(player.heading == HEADING_LEFT) {
+                    initPlayerAnim(frames, &frameCounter, player.heading, player.isMoving, walkingUp, walkingDown, walkingLeft, walkingRight, &player);
+                } else if (player.heading == HEADING_RIGHT) {
+                    initPlayerAnim(frames, &frameCounter, player.heading, player.isMoving, walkingUp, walkingDown, walkingLeft, walkingRight, &player);                
+                } else if (player.heading == HEADING_UP) {
+                    initPlayerAnim(frames, &frameCounter, player.heading, player.isMoving, walkingUp, walkingDown, walkingLeft, walkingRight, &player);
+                } else if(player.heading == HEADING_DOWN){
+                    initPlayerAnim(frames, &frameCounter, player.heading, player.isMoving, walkingUp, walkingDown, walkingLeft, walkingRight, &player);
                 }
                 
                 BeginDrawing();
@@ -257,15 +296,21 @@ int main()
                 DrawText(waveChar, 1125, 1125, 60, PINK);
                 DrawText(waveNumber, 1340, 1125, 60, PINK);
                 
-                
                 DrawTextureEx(spikeTexture, (Vector2){700, 700}, 0, 0.4, RAYWHITE);
                 for(int i=0;i<4;i++){
                     DrawRectangleRec(walls[i], BLACK);
                     DrawRectangleRec(walls_player[i], GRAY);
                 }
-                DrawTexture(playerTexture, player.posX, player.posY, RAYWHITE);
+                initPlayerAnim(frames, &frameCounter, player.heading, player.isMoving, walkingUp, walkingDown, walkingLeft, walkingRight, &player);
+                //DrawTexture(playerTexture, player.posX, player.posY, RAYWHITE);
                 for(int i=0;i<Numbercars;i++){
                     DrawCar(cars[i], carTexture);
+                    //Fazer carro ficar destruido na cena
+                    if(cars[i].life <= 0 || cars[i].life == 300){
+                        DrawTextureEx(carTextureDestroyed, (Vector2){cars[i].posX, cars[i].posY},0,0.1,RAYWHITE);
+                        carStop(cars, Numbercars, i, cars[i].posX, cars[i].posY);
+                    }
+                    //qualquer coisa, só tirar esse if
                 }
                 DrawLineEx ((Vector2){player.posX - 30, player.posY - 10}, (Vector2){(player.posX - 30) + (player.life * 2), player.posY - 10}, 10, GOLD); 
                 if(player.life<=0){
@@ -338,8 +383,6 @@ int main()
                 applyPlayerDamage(&player, cars, &spike, Numbercars, 1);
 
 
-
-                
                 EndDrawing();
                 EndMode2D();
                 break;
@@ -361,8 +404,9 @@ int main()
         
         
     }
-    UnloadTexture(playerTexture);
+    UnloadTexture(playerTexture);    
     UnloadTexture(carTexture);
+    UnloadTexture(carTextureDestroyed);
     UnloadTexture(spikeTexture);
     UnloadTexture(backgroundTexture);
     UnloadTexture(menuTexture);

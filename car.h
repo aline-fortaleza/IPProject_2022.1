@@ -33,6 +33,8 @@ void DrawCar(Car car, Texture2D carTexture);
 
 void moveCar(Car *car);
 
+void carStop(Car *cars, int numberCars, int i, int posX, int posY)
+
 bool collidedWalls(Car car, Rectangle walls[]);
 
 void MasterUpdateCars(Car *cars, int numberCars, Rectangle walls[], Player player, float *mainTimer);
