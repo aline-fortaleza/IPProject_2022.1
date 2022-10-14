@@ -158,14 +158,14 @@ int main()
 
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
-    Vector2 selectorUpgrades = {(int) (upgradesTexture.width/2), (int) 550};
+    Vector2 selectorUpgrades = {(int) (upgradesTexture.width/2) -715 , (int) 540};
     bool PRESS_UP = false;
     bool PRESS_DOWN = false; 
     int mode = INITMENU; 
       
     while (!WindowShouldClose()){    
         
-        switch(UPGRADE){
+        switch(mode){
             case INITMENU:
                 if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
                     
@@ -326,6 +326,7 @@ int main()
                 if(carsDestroyed == Numbercars){
                     Wave +=1;
                     Numbercars = 4 * Wave;
+                    mode = UPGRADES;
                     cars = (Car *) realloc(cars, Numbercars * sizeof(Car));
                     for(int i = 0; i < Numbercars; i++){
                         /*if(i % 2 == 0){
@@ -365,8 +366,63 @@ int main()
                 EndDrawing();
                 EndMode2D();
                 break;
-            case UPGRADE:
-                //código da escolha do upgrade no final de cada wave
+
+            case UPGRADES:
+                if (IsKeyDown(KEY_UP) == true && selectorUpgrades.y != 540 && PRESS_UP == false) {
+
+                    selectorUpgrades.y -= 100;
+                    PRESS_UP = true;
+
+                }
+                if(IsKeyDown(KEY_UP) == false) {
+                    PRESS_UP = false;
+                }
+                if (IsKeyDown(KEY_DOWN) == true && selectorUpgrades.y != 840 && PRESS_DOWN == false) {
+
+                   selectorUpgrades.y += 100;
+                   PRESS_DOWN = true;
+                }
+                if(IsKeyDown(KEY_DOWN) == false) {
+                    PRESS_DOWN = false;
+                }
+
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 540){
+                    EndDrawing();
+                    healPlayer(&player);
+                    mode = GAME;
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 640){
+                    EndDrawing();
+                    generateNewRandomSpikes(&spike, &numberSpikes);
+                    mode = GAME;
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 740){
+                    EndDrawing();
+                    increasePlayerSpeed(&player);
+                    CloseWindow();
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 840){
+                    EndDrawing();
+                    cam.zoom -= 0.1;
+                    CloseWindow();
+
+                }
+
+                BeginDrawing();
+                ClearBackground(GRAY);
+                DrawTextureEx(upgradesTexture, (Vector2){200,7},0,0.75, RAYWHITE);
+                DrawCircleV(selectorUpgrades, 10, GOLD);
+
+                DrawText("Recuperar vida", (rulesTexture.width/2) -700 , 500, 80, WHITE);
+                DrawText("Adicionar novo espinho", (rulesTexture.width/2) -700 , 600, 80, WHITE);
+                DrawText("Aumentar velocidade ", (rulesTexture.width/2) -700 , 700, 80, WHITE);
+                DrawText("Aumentar a visao da camera ", (rulesTexture.width/2) -700 , 800, 80, WHITE);
+
+                EndDrawing();
+                break;
                 break;
             case LOST:
                 BeginDrawing();
