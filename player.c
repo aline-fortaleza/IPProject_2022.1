@@ -28,3 +28,31 @@ void movePlayer(Player *player, Rectangle walls_player[]){
     
 
 }
+void startPlayerAnim(int frames, Texture2D walkingLeft[], Texture2D walkingRight[], Player *player){
+    if(player[0].frameCounter==4){
+        player[0].frameCounter = 0;
+    }
+    if(player[0].isMoving == false){
+        player[0].frameCounter = 0;
+        if(player[0].heading==HEADING_LEFT){
+            DrawTextureEx(walkingLeft[player[0].frameCounter], (Vector2){player[0].posX, player[0].posY}, 0, 1, RAYWHITE);
+        }
+        else if(player[0].heading==HEADING_RIGHT){
+            DrawTextureEx(walkingRight[player[0].frameCounter], (Vector2){player[0].posX, player[0].posY}, 0, 1, RAYWHITE);
+        }
+    }
+    else{
+        if(player[0].heading==HEADING_LEFT){
+            DrawTextureEx(walkingLeft[player[0].frameCounter], (Vector2){player[0].posX, player[0].posY}, 0, 1, RAYWHITE);
+            if(frames%4==0){
+                player[0].frameCounter++;
+            }
+        }
+        else if(player[0].heading == HEADING_RIGHT){
+            DrawTextureEx(walkingRight[player[0].frameCounter], (Vector2){player[0].posX, player[0].posY}, 0, 1, RAYWHITE);
+            if(frames%4==0){
+                player[0].frameCounter++;
+            }
+        }
+    }
+}

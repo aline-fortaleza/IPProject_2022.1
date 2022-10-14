@@ -38,10 +38,18 @@ int main()
     Texture2D rulesTexture = LoadTexture("rules2.0.png");
     Texture2D lostTexture = LoadTexture("lost.png");
     
+    //carregando animações do personagem;
+    Texture2D walkingLeft[4];
+    walkingLeft[0] = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
+    walkingLeft[1] = LoadTexture("Assets/CharacterSprites/PlayerWalkingLeft (1).png");
+    walkingLeft[2] = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
+    walkingLeft[3] = LoadTexture("Assets/CharacterSprites/PlayerWalkingLeft (2).png");
 
-    
-
-
+    Texture2D walkingRight[4];
+    walkingRight[0] = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
+    walkingRight[1] = LoadTexture("Assets/CharacterSprites/PlayerWalkingRight (1).png");
+    walkingRight[2] = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
+    walkingRight[3] = LoadTexture("Assets/CharacterSprites/PlayerWalkingRight (2).png");
 
 
     Rectangle exemplo;
@@ -68,7 +76,7 @@ int main()
     playerCollision.y = 100;
     playerCollision.width = 30;
     playerCollision.height = 35;
-    Player player = (Player){400, 400, 0, 50, playerCollision, exemplo, 5, 5, false, true, true, 2};
+    Player player = (Player){400, 400, 0, 50, playerCollision, exemplo, 5, HEADING_LEFT, false, true, true, 2};
     
     
     
@@ -134,7 +142,7 @@ int main()
     char waveChar[10] = "WAVE:";
     char waveNumber[3];
     int carsDestroyed = 0; 
-
+    int frames = 0;
     Camera2D cam;
     cam.offset = (Vector2){GetScreenWidth()/2, GetScreenHeight()/2};
     cam.rotation = 0;
@@ -215,7 +223,10 @@ int main()
             case GAME:
                 // sprintf(playerPosX, "%d", player.posX);
                 // sprintf(playerPosY, "%d", player.posY);
-                
+                frames++;
+                if(frames>24){
+                    frames = 0;
+                }
                 sprintf(playerlife, "%d", player.life);
                 player.isMoving = false;
                 mainTimer+=GetFrameTime();
@@ -240,11 +251,6 @@ int main()
                 
                 movePlayer(&player, walls_player);
 
-                if(player.heading == HEADING_LEFT) {
-                    playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
-                } else if (player.heading == HEADING_RIGHT) {
-                    playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleRight.png");
-                }
                 
                 BeginDrawing();
                 BeginMode2D(cam);
@@ -263,7 +269,7 @@ int main()
                     DrawRectangleRec(walls[i], BLACK);
                     DrawRectangleRec(walls_player[i], GRAY);
                 }
-                DrawTexture(playerTexture, player.posX, player.posY, RAYWHITE);
+                startPlayerAnim(frames, walkingLeft, walkingRight, &player);
                 for(int i=0;i<Numbercars;i++){
                     DrawCar(cars[i], carTexture);
                 }
