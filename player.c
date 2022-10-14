@@ -56,3 +56,10 @@ void startPlayerAnim(int frames, Texture2D walkingLeft[], Texture2D walkingRight
         }
     }
 }
+
+void UnloadPlayerAnimation(Texture2D walkingLeft[], Texture2D walkingRight[]){
+    for(int i=0;i<4;i++){
+        UnloadTexture(walkingLeft[i]);
+        UnloadTexture(walkingRight[i]);
+    }
+}

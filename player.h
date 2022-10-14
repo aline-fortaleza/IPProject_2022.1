@@ -24,4 +24,6 @@ void movePlayer(Player *player, Rectangle walls_player[]);
 
 void startPlayerAnim(int frames, Texture2D walkingLeft[], Texture2D walkingRight[], Player *player);
 
+void UnloadPlayerAnimation(Texture2D walkingLeft[], Texture2D walkingRight[]);
+
 #endif

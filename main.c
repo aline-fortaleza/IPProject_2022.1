@@ -374,6 +374,7 @@ int main()
     UnloadTexture(menuTexture);
     UnloadTexture(rulesTexture);
     UnloadTexture(lostTexture);
+    UnloadPlayerAnimation(walkingLeft, walkingRight);
     free(cars);
     CloseWindow();
           
