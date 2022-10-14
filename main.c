@@ -333,7 +333,7 @@ int main()
                 }
 
                 for(int j=0; j< Numbercars; j++){
-                    if(cars[j].life > 0 && cars[j].life < 200){
+                    if(cars[j].life > 0 && cars[j].life < 80){
                         DrawRectangle(cars[j].posX-25, cars[j].posY-32, cars[j].life, 7, GREEN);
                     }
                 }
