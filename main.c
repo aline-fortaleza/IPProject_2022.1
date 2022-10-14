@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "colisao.c"
+#include "upgrade.c"
 
 
 
@@ -17,7 +18,7 @@
 #define INITMENU 10
 #define RULES 11
 #define GAME 12
-#define UPGRADE 13
+#define UPGRADES 13
 #define LOST 14
 
 
@@ -128,15 +129,18 @@ int main()
     
     float mainTimer = 0;
     Rectangle spikeCollision;
-    spikeCollision.x = 700;
-    spikeCollision.y = 700;
+    spikeCollision.x = 1000;
+    spikeCollision.y = 1000;
     spikeCollision.width = 55;
     spikeCollision.height = 55;
     Texture2D spikeTexture = LoadTexture("spike.png");
-    Spikes spike;
-    spike.posX = 700;
-    spike.posY = 700;
-    spike.spikeCollision = spikeCollision;
+    Spikes *spike = malloc(sizeof(Spikes)*1);
+    Spikes firstSpike;
+    firstSpike.posX = 1000;
+    firstSpike.posY = 1000;
+    firstSpike.spikeCollision = spikeCollision;
+    spike[0] = firstSpike;
+
     char playerlife[5];
     char playerPosX[5];
     char playerPosY[5];
@@ -144,6 +148,7 @@ int main()
     char waveChar[10] = "WAVE:";
     char waveNumber[3];
     int carsDestroyed = 0; 
+    int numberSpikes = 1;
     int frames = 0;
     Camera2D cam;
     cam.offset = (Vector2){GetScreenWidth()/2, GetScreenHeight()/2};
@@ -238,7 +243,7 @@ int main()
                 for(int i=0;i<Numbercars;i++){
                     cars[i].timeCounter+=GetFrameTime();
                 }
-                if(verifyPlayerSpikesCollision(player, &spike, 1)==true){
+                if(verifyPlayerSpikesCollision(player, spike, numberSpikes)==true){
                     player.invencibilityTime-=GetFrameTime();
                 }
 
@@ -267,7 +272,9 @@ int main()
                 DrawText(waveNumber, 1340, 1125, 60, PINK);
                 
                 
-                DrawTextureEx(spikeTexture, (Vector2){700, 700}, 0, 0.4, RAYWHITE);
+                for(int i=0;i<numberSpikes;i++){
+                    DrawTextureEx(spikeTexture, (Vector2){spike[i].posX, spike[i].posY}, 0, 0.4, RAYWHITE);
+                }
                 for(int i=0;i<4;i++){
                     DrawRectangleRec(walls[i], BLACK);
                     DrawRectangleRec(walls_player[i], GRAY);
@@ -284,7 +291,13 @@ int main()
                     Wave = 1;
                     player.life = 50;
                     Numbercars = 4;
-                    
+                    numberSpikes = 1;
+                    Spikes *spike = malloc(sizeof(Spikes)*1);
+                    Spikes firstSpike;
+                    firstSpike.posX = 1000;
+                    firstSpike.posY = 1000;
+                    firstSpike.spikeCollision = spikeCollision;
+                    spike[0] = firstSpike;
                     cars = malloc(sizeof(Car)*Numbercars);
                     for(int i = 0; i < Numbercars; i++){
                         if(i % 2 == 0){
@@ -342,9 +355,9 @@ int main()
 
                 MasterUpdateCars(cars, Numbercars, walls, player, &mainTimer);
 
-                applyCarDamage(&spike, cars, Numbercars, 1);
+                applyCarDamage(spike, cars, Numbercars, numberSpikes);
 
-                applyPlayerDamage(&player, cars, &spike, Numbercars, 1);
+                applyPlayerDamage(&player, cars, spike, Numbercars, numberSpikes);
 
 
 
@@ -353,56 +366,7 @@ int main()
                 EndMode2D();
                 break;
             case UPGRADE:
-                if (IsKeyDown(KEY_UP) == true && selectorUpgrades.y != 550 && PRESS_UP == false) {
-                    
-                    selectorUpgrades.y -= 100;
-                    PRESS_UP = true;
-                       
-                }
-                if(IsKeyDown(KEY_UP) == false) {
-                    PRESS_UP = false;
-                }
-                if (IsKeyDown(KEY_DOWN) == true && selectorUpgrades.y != 850 && PRESS_DOWN == false) {
-                     
-                   selectorUpgrades.y += 100;
-                   PRESS_DOWN = true;
-                }
-                if(IsKeyDown(KEY_DOWN) == false) {
-                    PRESS_DOWN = false;
-                }
-
-                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 550){
-                   
-                    mode = GAME;
-
-                }
-                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 650){
-                    EndDrawing();
-                    mode = RULES;
-
-                }
-                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 750){
-                    EndDrawing();
-                    CloseWindow();
-
-                }
-                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 850){
-                    EndDrawing();
-                    CloseWindow();
-
-                }
-                 
-                BeginDrawing();
-                ClearBackground(GRAY);
-                DrawTextureEx(upgradesTexture, (Vector2){200,7},0,0.75, RAYWHITE);
-                DrawCircleV(selectorUpgrades, 10, GOLD);
-
-                DrawText("Recuperar vida", (rulesTexture.width/2) -700 , 500, 80, WHITE);
-                DrawText("Adicionar novo espinho", (rulesTexture.width/2) -700 , 600, 80, WHITE);
-                DrawText("Aumentar velocidade ", (rulesTexture.width/2) -700 , 700, 80, WHITE);
-                DrawText("Aumentar a visao da camera ", (rulesTexture.width/2) -700 , 800, 80, WHITE);
-
-                EndDrawing();
+                //código da escolha do upgrade no final de cada wave
                 break;
             case LOST:
                 BeginDrawing();

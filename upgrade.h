@@ -6,10 +6,16 @@
 #include "player.h"
  
 
-void upgradePlayerLife (Player *player); 
+/*void upgradePlayerLife (Player *player); 
 
 void upgradenumberSpikes(Spikes *spike, int *numberSpike); 
-    //lembrar de dar MemFree 
- void upgradePlayerSpeed(Player *player);
+    
+void upgradePlayerSpeed(Player *player);*/
+
+void healPlayer(Player *player);
+
+Spikes *generateNewRandomSpikes(Spikes *spikes, int *numberSpikes);
+
+void increasePlayerSpeed(Player *player);
 
  #endif 
