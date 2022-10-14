@@ -154,8 +154,8 @@ int main()
     bool PRESS_UP = false;
     bool PRESS_DOWN = false; 
     int mode = INITMENU; 
-      
-    while (!WindowShouldClose()){    
+    InitAudioDevice();
+    while (!WindowShouldClose()){   
         PlayMusicStream(music1);
         UpdateMusicStream(music1); 
         switch(mode){
