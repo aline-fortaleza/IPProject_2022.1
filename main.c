@@ -344,7 +344,7 @@ int main()
                 for(int i = 0; i< Numbercars; i++){
                     if(cars[i].life <=0){
                         carsDestroyed ++;
-                        cars[i].life = 300;
+                        cars[i].life = 30000;
                     }
                 }
                 //Aumenta o Numero de carros a cada Wave
