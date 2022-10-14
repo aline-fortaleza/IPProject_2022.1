@@ -322,6 +322,7 @@ int main()
                 //Aumenta o Numero de carros a cada Wave
                 if(carsDestroyed == Numbercars){
                     Wave +=1;
+                    
                     Numbercars = 4 * Wave;
                     cars = (Car *) realloc(cars, Numbercars * sizeof(Car));
                     for(int i = 0; i < Numbercars; i++){
@@ -389,6 +390,7 @@ int main()
     UnloadTexture(lostTexture);
     UnloadPlayerAnimation(walkingLeft, walkingRight);
     free(cars);
+    free(spike);
     CloseWindow();
           
     return 0;
