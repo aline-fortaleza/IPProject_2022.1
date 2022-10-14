@@ -141,10 +141,10 @@ int main()
     firstSpike.spikeCollision = spikeCollision;
     spike[0] = firstSpike;
 
-    char playerlife[5];
-    char playerPosX[5];
-    char playerPosY[5];
-    char CarsDestorided[5];
+    //char playerlife[5];
+    //char playerPosX[5];
+    //char playerPosY[5];
+    //char CarsDestorided[5];
     char waveChar[10] = "WAVE:";
     char waveNumber[3];
     int carsDestroyed = 0; 
@@ -235,7 +235,7 @@ int main()
                 if(frames>24){
                     frames = 0;
                 }
-                sprintf(playerlife, "%d", player.life);
+                //sprintf(playerlife, "%d", player.life);
                 player.isMoving = false;
                 mainTimer+=GetFrameTime();
                 player.playerCollision.x = player.posX;
@@ -351,8 +351,8 @@ int main()
                     carsDestroyed = 0;
                 }
 
-                sprintf(CarsDestorided, "%d", Wave);
-                DrawText(CarsDestorided, 200, 400 , 60, PURPLE);
+                //sprintf(CarsDestorided, "%d", Wave);
+                //DrawText(CarsDestorided, 200, 400 , 60, PURPLE);
 
 
                 MasterUpdateCars(cars, Numbercars, walls, player, &mainTimer);
