@@ -155,16 +155,17 @@ int main()
     cam.rotation = 0;
     cam.zoom = 1.2;
     
-
+    Music music1=LoadMusicStream("Alan Walker - Faded.mp3");
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
     Vector2 selectorUpgrades = {(int) (upgradesTexture.width/2) -715 , (int) 540};
     bool PRESS_UP = false;
     bool PRESS_DOWN = false; 
     int mode = INITMENU; 
-      
-    while (!WindowShouldClose()){    
-        
+    InitAudioDevice();
+    while (!WindowShouldClose()){   
+        PlayMusicStream(music1);
+        UpdateMusicStream(music1); 
         switch(mode){
             case INITMENU:
                 if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
@@ -325,6 +326,7 @@ int main()
                 //Aumenta o Numero de carros a cada Wave
                 if(carsDestroyed == Numbercars){
                     Wave +=1;
+                    
                     Numbercars = 4 * Wave;
                     mode = UPGRADES;
                     cars = (Car *) realloc(cars, Numbercars * sizeof(Car));
@@ -394,20 +396,20 @@ int main()
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 640){
                     EndDrawing();
-                    generateNewRandomSpikes(&spike, &numberSpikes);
+                    spike = generateNewRandomSpikes(spike, &numberSpikes);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 740){
                     EndDrawing();
                     increasePlayerSpeed(&player);
-                    CloseWindow();
+                    mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 840){
                     EndDrawing();
                     cam.zoom -= 0.1;
-                    CloseWindow();
+                    mode = GAME;
 
                 }
 
@@ -449,8 +451,10 @@ int main()
     UnloadTexture(rulesTexture);
     UnloadTexture(lostTexture);
     UnloadPlayerAnimation(walkingLeft, walkingRight);
+    UnloadMusicStream(music1);                            // Unload music stream  
     UnloadTexture(upgradesTexture);
     free(cars);
+    free(spike);
     CloseWindow();
           
     return 0;
