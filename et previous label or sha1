@@ -1,0 +1,360 @@
+[33mcommit 0e701dc69facdad20e7df421dc6e3badc9e5fad8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 5f585e5 c483c48
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Fri Oct 14 13:55:43 2022 -0300
+
+    Merge pull request #7 from pedromotta462/master
+    
+    Add animations and car destroyed
+
+[33mcommit c483c485f14265171ab3a31647dff053bcda0d45[m
+Author: Pedro Motta <pedromotta1d2015@gmail.com>
+Date:   Fri Oct 14 07:08:03 2022 -0300
+
+    Add animations and car destroyed
+
+[33mcommit 5f585e549568b3acf3e61e7a2445c3f8203cfad4[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 20:55:27 2022 -0300
+
+    animação personagem
+
+[33mcommit 00b1cae604dcf4154f55328944c2ca21a634d28f[m
+Merge: 49015b1 be14a13
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 20:48:15 2022 -0300
+
+    sync
+
+[33mcommit 49015b17e38bb7375c1b91199c350f0a51abc784[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 20:33:50 2022 -0300
+
+    sync
+
+[33mcommit be14a138894b6eed97a4604f8b7bfd2835f5955c[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Thu Oct 13 19:54:47 2022 -0300
+
+    corrigindo bug da segunda jogatina
+
+[33mcommit cf56058ac67f009c5ade544c4e249f0abaf85b66[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Thu Oct 13 19:12:27 2022 -0300
+
+    mudanças na dificuldade, no camera e mostro wave
+
+[33mcommit 111add8301f70974563460ea1ef188ec5a0f38e6[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Thu Oct 13 18:23:51 2022 -0300
+
+    modificações feitas
+
+[33mcommit f5636edb6cbc5d59a37962eec52448852b6850e6[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 18:09:39 2022 -0300
+
+    voltando atras da solução
+
+[33mcommit 900df94dd698efb0037ca33b2f975439f6f0b4d0[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 17:57:42 2022 -0300
+
+    Bug do lost arrumado
+
+[33mcommit 7de4eece4bc58ebcbdef64a63f9d132fa2945ab6[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 17:48:57 2022 -0300
+
+    Barrinha de vida pesonagem
+
+[33mcommit d0be2e3ab3be61fc5dccbb78c0dc1907f41eae5e[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 17:22:49 2022 -0300
+
+    Atualização do lost
+
+[33mcommit 0c8a47a2a13e9e18de966d78f4543d5b104e0e76[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 16:51:11 2022 -0300
+
+    Tirada de comentarios desnecessarios
+
+[33mcommit d759cdd9f9d7e631380ae38f582a4fbb6c32d544[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 16:43:30 2022 -0300
+
+    menu com bug consertado
+
+[33mcommit 09034f0b357162027dbd112e635ee6ae6f17ca5f[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 16:19:04 2022 -0300
+
+    Menu terminado
+
+[33mcommit 5c8d824018b3bff988b9665d6c56cae4b0390a9c[m
+Merge: 2699bef 87b6aba
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 15:47:38 2022 -0300
+
+    menu com cursor
+
+[33mcommit 2699bef9c6d07037e76324989f6ab46e7840f339[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 15:43:16 2022 -0300
+
+    menu com seletor
+
+[33mcommit 87b6abaafde42b5d781aa0da889f23fd5b2ecf9c[m
+Merge: 61d967e fe184b6
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 14:18:40 2022 -0300
+
+    Merge pull request #6 from Azvedo/master
+    
+    Waves
+
+[33mcommit fe184b65c312e7cf9019ae526cc5cb638443185d[m
+Merge: 931d80f 61d967e
+Author: rafaelAzvedo <raas@cin.ufpe.br>
+Date:   Thu Oct 13 14:07:34 2022 -0300
+
+    Merge https://github.com/Azvedo/IPProject_2022.1
+
+[33mcommit 931d80fc96e943598c4e579818f1ee319ea9a3ed[m
+Author: rafaelAzvedo <raas@cin.ufpe.br>
+Date:   Thu Oct 13 14:05:03 2022 -0300
+
+    Waves adicionada(aparentemente sem bugs)
+
+[33mcommit 4c70869c4433c62c6c7906f3264097e0a7f6b7b5[m
+Author: rafaelAzvedo <raas@cin.ufpe.br>
+Date:   Thu Oct 13 14:04:24 2022 -0300
+
+    Waves adicionadas(aparentemente sem bug)
+
+[33mcommit 28b6a18b041c32f15c01f94884fe0f8e0ead70f8[m
+Merge: 9920ee4 48b7649
+Author: rafaelAzvedo <raas@cin.ufpe.br>
+Date:   Thu Oct 13 14:03:03 2022 -0300
+
+    Merge https://github.com/Azvedo/IPProject_2022.1
+    Waves adicionadas(aparentemente sem bugs)
+
+[33mcommit 61d967e8f09a1cf3638c6ddc1df64c3197b00877[m
+Author: anapsa <anapaulasapaiva@gmail.com>
+Date:   Thu Oct 13 13:44:56 2022 -0300
+
+    base das bibliotecas de upgrade
+
+[33mcommit 48b7649881ea96afb922d4fa5b87fcd9de1a13c2[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 13:14:56 2022 -0300
+
+    menu part2
+
+[33mcommit 9920ee44382f1500befb6506b386e26abef8b073[m
+Author: rafaelAzvedo <raas@cin.ufpe.br>
+Date:   Thu Oct 13 13:02:44 2022 -0300
+
+    Waves adicionadas
+
+[33mcommit 094a639c65f67856f61af4c789a9ee616488a255[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 11:38:19 2022 -0300
+
+    menu 1.0
+
+[33mcommit 85227e86c95e15b37353a6cabf636044914a63ea[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 11:33:25 2022 -0300
+
+    texturas
+
+[33mcommit bf08928fb17bd22ed6af2b01498a954ec1516909[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 11:16:23 2022 -0300
+
+    Paredes do carro e do player
+
+[33mcommit 37ee04cf003e3735c695938e09d7fdb60f0207e8[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Thu Oct 13 10:35:18 2022 -0300
+
+    Primeira limitação de movimentação
+
+[33mcommit 01af96af16f27a3efefde51268c8f594b4261110[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 12 19:14:08 2022 -0300
+
+    corrigindo o bug da colisão com carro invisível
+
+[33mcommit 39a8fd84aad1a67feff35b3093f0a9f24cdc34a9[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 12 19:04:59 2022 -0300
+
+    testes de colisão feitos
+
+[33mcommit c84f1816d9064fe3a9be77692b7e46aa3f9d6ada[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 12 17:37:19 2022 -0300
+
+    ajuste na lib e no main
+
+[33mcommit e2a58fcdab65242f2cafc77f155aaffd738f86ae[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 12 17:20:34 2022 -0300
+
+    biblioteca de colisão inserida
+
+[33mcommit abb066c465176c562cc4f53c788911b884c7e525[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 12 16:21:09 2022 -0300
+
+    teste colisão
+
+[33mcommit 7921ee041c23645ec4d8469cd102f74f0fcc1965[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Tue Oct 11 17:31:11 2022 -0300
+
+    alguns updates na perseguição
+
+[33mcommit b5cb8ada7534e2f92710d0b82ac114b915178c85[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Tue Oct 11 17:29:01 2022 -0300
+
+    avanços na lógica de perseguição
+
+[33mcommit 9c5eea62f572dcc798dfa24cf7059985ad2560cb[m
+Merge: e98ad40 1acc0b5
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Mon Oct 10 08:37:11 2022 -0300
+
+    Merge pull request #3 from hlpaa/master
+    
+    retangle car collision
+
+[33mcommit 1acc0b5673fd080a0d0f50bf2caa5a64e6abff82[m
+Merge: 7f59112 e98ad40
+Author: henrique <henriquelins2004@gmail.com>
+Date:   Sun Oct 9 15:08:44 2022 -0300
+
+    Merge branch 'master' of https://github.com/hlpaa/IPProject_2022.1
+
+[33mcommit 7f591123ec70aad2aa641dee6fce139240af8a88[m
+Author: henrique <henriquelins2004@gmail.com>
+Date:   Sat Oct 8 22:20:38 2022 -0300
+
+    foi
+
+[33mcommit e98ad40c3df15280ee509d70dcea2fa4d805f476[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Sat Oct 8 22:12:33 2022 -0300
+
+    bug consertado?
+
+[33mcommit 63e8d126051317374559cff6cafea3fdbb69a475[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Fri Oct 7 22:06:37 2022 -0300
+
+    exemplo básico de perseguição(lembrem do git pull)
+
+[33mcommit e38e05abe6257624b812dcb673fd4b2ddd55c988[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Fri Oct 7 17:45:53 2022 -0300
+
+    subindo os assets do menu, código vai jaja
+
+[33mcommit a958fa2b907c372c63531cc07bb7a1d3c907862d[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 5 22:36:26 2022 -0300
+
+    testando merge conflicts
+
+[33mcommit aac33f490cd1b5c85d0c6db5cc04e81b6f04f936[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 5 22:35:56 2022 -0300
+
+    testando merge conflicts
+
+[33mcommit d04b8c44ee77d81e0e2dc0d62c57fd50f2903ef4[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Wed Oct 5 21:42:04 2022 -0300
+
+    teste angulo carro e perseguição(incompleto)
+
+[33mcommit c9a8f2a4baa43ad5dc3bb0bf46f4aba4e2327920[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Tue Oct 4 18:29:55 2022 -0300
+
+    estruturação básica do código
+
+[33mcommit 9a30aa990cb8654aabc33e89d538e05d6ae4efa9[m
+Merge: 4842ad2 69685ee
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Tue Oct 4 18:21:48 2022 -0300
+
+    Merge https://github.com/aline-fortaleza/IPProject_2022.1
+
+[33mcommit 4842ad2ea5766b4572eda1dd744207aadd1df52a[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Tue Oct 4 18:17:37 2022 -0300
+
+    implementação de função de movimento na biblioteca
+
+[33mcommit 69685eec18d62bd6d8caa75609445b5f38e6dc20[m
+Merge: 98b768f 3a44189
+Author: lucaslimacodes <105332015+lucaslimacodes@users.noreply.github.com>
+Date:   Tue Oct 4 11:28:37 2022 -0300
+
+    Merge pull request #2 from lucaslimacodes/master
+    
+    criação de bibliotecas
+
+[33mcommit 3a44189b3f7d7299b13f79fe2e653205b615ad87[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Mon Oct 3 21:33:24 2022 -0300
+
+    bug consertado
+
+[33mcommit 6f96275739b9ab0049330b4fa8fe98ae581688d2[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Mon Oct 3 18:52:44 2022 -0300
+
+    criação das bibliotecas báscias
+
+[33mcommit 9537a9d2f1b901406cdd3e85a92653600863221b[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Mon Oct 3 18:50:36 2022 -0300
+
+    criação das bibliotecas básicas
+
+[33mcommit 0005e9be149f53eb9ee8b39fd542671ce6bbab44[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Mon Oct 3 18:50:06 2022 -0300
+
+    criação das bibliotecas básicas
+
+[33mcommit 0119692cfb784aee8e38a1aee63b37fde998298b[m
+Author: lucas <lucaslima12345.41@gmail.com>
+Date:   Mon Oct 3 18:24:37 2022 -0300
+
+    sprites do personagem adicionados
+
+[33mcommit 98b768f9832da4629561d02f2473f6699e269414[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Mon Oct 3 10:18:53 2022 -0300
+
+    inicio
+
+[33mcommit f59721bdc7fc842bffce267b9386dca6a7bde767[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Mon Oct 3 09:28:23 2022 -0300
+
+    commit com assets
+
+[33mcommit b59082479ffb194898e9d273bc55e9e1f00d8a12[m
+Author: aline-fortaleza <108816622+aline-fortaleza@users.noreply.github.com>
+Date:   Mon Oct 3 08:27:29 2022 -0300
+
+    primeiro commit
