@@ -40,7 +40,7 @@ void DrawCar(Car car, Texture2D carTexture){
     destination.height = 45;
     destination.width = 65;
     Vector2 origin = (Vector2){30, 30};
-    if(car.life>0  && car.life < 200){
+    if(car.life>0  && car.life <80){
         DrawTexturePro(carTexture, source, destination, origin, car.angle, RAYWHITE);
     }
    
@@ -87,12 +87,12 @@ void MasterUpdateCars(Car *cars, int numberCars, Rectangle walls[], Player playe
             }
         }
     }
-    if(*mainTimer>10){
+    if(*mainTimer>8){
         for(int i=0;i<numberCars;i++){
-            cars[i].speed+=2;
-            cars[i].timeChangingAngle-=0.5;
-            if(cars[i].timeChangingAngle<0.1){
-                cars[i].timeChangingAngle = 0.1;
+            cars[i].speed+=1;
+            cars[i].timeChangingAngle-=0.2;
+            if(cars[i].timeChangingAngle<0.3){
+                cars[i].timeChangingAngle = 0.3;
             }
         }
         *mainTimer = 0;

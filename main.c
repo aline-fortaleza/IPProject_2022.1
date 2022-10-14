@@ -326,6 +326,7 @@ int main()
                 //Aumenta o Numero de carros a cada Wave
                 if(carsDestroyed == Numbercars){
                     Wave +=1;
+                    
                     Numbercars = 4 * Wave;
                     mode = UPGRADES;
                     cars = (Car *) realloc(cars, Numbercars * sizeof(Car));
@@ -395,20 +396,20 @@ int main()
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 640){
                     EndDrawing();
-                    generateNewRandomSpikes(&spike, &numberSpikes);
+                    spike = generateNewRandomSpikes(spike, &numberSpikes);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 740){
                     EndDrawing();
                     increasePlayerSpeed(&player);
-                    CloseWindow();
+                    mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 840){
                     EndDrawing();
                     cam.zoom -= 0.1;
-                    CloseWindow();
+                    mode = GAME;
 
                 }
 
@@ -453,6 +454,7 @@ int main()
     UnloadMusicStream(music1);                            // Unload music stream  
     UnloadTexture(upgradesTexture);
     free(cars);
+    free(spike);
     CloseWindow();
           
     return 0;

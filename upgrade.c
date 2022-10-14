@@ -32,7 +32,7 @@ void upgradenumberSpikes(Spikes *spike, int *numberSpike) {
 }*/
 
 void healPlayer(Player *player){
-    player[0].life = 70;
+    player[0].life = 50;
 
 }
 
