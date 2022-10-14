@@ -159,6 +159,7 @@ int main()
     Music music1=LoadMusicStream("Assets/Songs/song1.mp3");
     Sound soundEffect = LoadSound("Assets/Songs/selectsound.mp3");
     Sound gameover = LoadSound("Assets/Songs/gameover.mp3");
+    Sound damage = LoadSound("Assets/Songs/damage.mp3");
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
     Vector2 selectorUpgrades = {(int) (upgradesTexture.width/2) -715 , (int) 540};
@@ -166,6 +167,7 @@ int main()
     bool PRESS_DOWN = false; 
     int mode = INITMENU; 
     int flagSound = 0;
+    
 
     while (!WindowShouldClose()){   
         if(mode == INITMENU){
@@ -376,7 +378,9 @@ int main()
 
                 //sprintf(CarsDestorided, "%d", Wave);
                 //DrawText(CarsDestorided, 200, 400 , 60, PURPLE);
-
+                if(player.isReadytoHitCar==false || player.isReadytoHitSpikes == false){
+                    PlaySound(damage);
+                }
 
                 MasterUpdateCars(cars, Numbercars, walls, player, &mainTimer);
 
@@ -384,7 +388,8 @@ int main()
 
                 applyPlayerDamage(&player, cars, spike, Numbercars, numberSpikes);
 
-
+                
+                
 
                 
                 EndDrawing();
@@ -480,6 +485,8 @@ int main()
     UnloadMusicStream(music1);                            // Unload music stream  
     UnloadTexture(upgradesTexture);
     UnloadSound(soundEffect);
+    UnloadSound(damage);
+    UnloadSound(gameover);
     free(cars);
     free(spike);
     CloseAudioDevice();
