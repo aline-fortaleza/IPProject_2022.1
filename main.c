@@ -32,6 +32,7 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
     SetTargetFPS(60);
+    InitAudioDevice();
 
     Texture2D carTexture = LoadTexture("SportsRacingCar_0.png");
     Texture2D playerTexture = LoadTexture("Assets/CharacterSprites/PlayerIdleLeft.png");
@@ -155,22 +156,40 @@ int main()
     cam.rotation = 0;
     cam.zoom = 1.2;
     
-    Music music1=LoadMusicStream("Alan Walker - Faded.mp3");
+    Music music1=LoadMusicStream("Assets/Songs/song1.mp3");
+    Sound soundEffect = LoadSound("Assets/Songs/selectsound.mp3");
+    Sound gameover = LoadSound("Assets/Songs/gameover.mp3");
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
     Vector2 selectorUpgrades = {(int) (upgradesTexture.width/2) -715 , (int) 540};
     bool PRESS_UP = false;
     bool PRESS_DOWN = false; 
     int mode = INITMENU; 
-    InitAudioDevice();
+    int flagSound = 0;
+
     while (!WindowShouldClose()){   
-        PlayMusicStream(music1);
-        UpdateMusicStream(music1); 
+        if(mode == INITMENU){
+            flagSound = 0;
+        }
+        if(mode!=LOST){
+            UpdateMusicStream(music1);
+            PlayMusicStream(music1);
+        }
+        else if(mode==LOST && flagSound == 0){
+            PauseMusicStream(music1);
+            PlaySound(gameover);
+            flagSound = 1;
+
+        }
+    
+
+        
         switch(mode){
             case INITMENU:
                 if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
                     
                     selectorPosition.y -= 100;
+                    PlaySound(soundEffect);
                     PRESS_UP = true;
                        
                 }
@@ -178,7 +197,7 @@ int main()
                     PRESS_UP = false;
                 }
                 if (IsKeyDown(KEY_DOWN) == true && selectorPosition.y != 750 && PRESS_DOWN == false) {
-                     
+                   PlaySound(soundEffect);  
                    selectorPosition.y += 100;
                    PRESS_DOWN = true;
                 }
@@ -188,16 +207,19 @@ int main()
 
                 if(IsKeyDown(KEY_ENTER) == true && selectorPosition.y == 550){
                     EndDrawing();
+                    PlaySound(soundEffect);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorPosition.y == 650){
                     EndDrawing();
+                    PlaySound(soundEffect);
                     mode = RULES;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorPosition.y == 750){
                     EndDrawing();
+                    PlaySound(soundEffect);
                     CloseWindow();
 
                 }
@@ -371,7 +393,7 @@ int main()
 
             case UPGRADES:
                 if (IsKeyDown(KEY_UP) == true && selectorUpgrades.y != 540 && PRESS_UP == false) {
-
+                    PlaySound(soundEffect);
                     selectorUpgrades.y -= 100;
                     PRESS_UP = true;
 
@@ -380,7 +402,7 @@ int main()
                     PRESS_UP = false;
                 }
                 if (IsKeyDown(KEY_DOWN) == true && selectorUpgrades.y != 840 && PRESS_DOWN == false) {
-
+                   PlaySound(soundEffect);
                    selectorUpgrades.y += 100;
                    PRESS_DOWN = true;
                 }
@@ -391,24 +413,28 @@ int main()
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 540){
                     EndDrawing();
                     healPlayer(&player);
+                    PlaySound(soundEffect);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 640){
                     EndDrawing();
                     spike = generateNewRandomSpikes(spike, &numberSpikes);
+                    PlaySound(soundEffect);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 740){
                     EndDrawing();
                     increasePlayerSpeed(&player);
+                    PlaySound(soundEffect);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 840){
                     EndDrawing();
                     cam.zoom -= 0.1;
+                    PlaySound(soundEffect);
                     mode = GAME;
 
                 }
@@ -453,8 +479,10 @@ int main()
     UnloadPlayerAnimation(walkingLeft, walkingRight);
     UnloadMusicStream(music1);                            // Unload music stream  
     UnloadTexture(upgradesTexture);
+    UnloadSound(soundEffect);
     free(cars);
     free(spike);
+    CloseAudioDevice();
     CloseWindow();
           
     return 0;
