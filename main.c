@@ -40,6 +40,7 @@ int main()
     Texture2D rulesTexture = LoadTexture("rules2.0.png");
     Texture2D lostTexture = LoadTexture("lost.png");
     Texture2D upgradesTexture = LoadTexture("upgrade_menu.png");
+    Texture2D carTextureDestroyed = LoadTexture("Assets/cardestroyed.png");
     
     //carregando animações do personagem;
     Texture2D walkingLeft[4];
@@ -321,6 +322,13 @@ int main()
                         carsDestroyed ++;
                         cars[i].life = 300;
                     }
+                    //Fazer carro ficar destruido na cena
+                    if(cars[i].life <= 0 || cars[i].life == 300){
+                        DrawTextureEx(carTextureDestroyed, (Vector2){cars[i].posX, cars[i].posY},0,0.1,RAYWHITE);
+                        carStop(cars, Numbercars, i, cars[i].posX, cars[i].posY);
+                    }
+                    //qualquer coisa, só tirar esse if
+
                 }
                 //Aumenta o Numero de carros a cada Wave
                 if(carsDestroyed == Numbercars){

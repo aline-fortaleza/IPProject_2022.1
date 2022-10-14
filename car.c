@@ -52,6 +52,15 @@ void moveCar(Car *car){
     
 }
 
+//fazer o carro "parar"
+void carStop(Car *cars, int numberCars, int i, int posX, int posY){
+        cars[i].mode = AIMING;
+        cars[i].posX = posX;
+        cars[i].posX = posY;
+        cars[i].isReadytoCollide = false;
+}
+//-------------------------------
+
 bool collidedWalls(Car car, Rectangle walls[]){
     bool isColliding = false;
     for(int i=0;i<4;i++){
