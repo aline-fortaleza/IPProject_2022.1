@@ -20,6 +20,7 @@
 #define UPGRADE 13
 #define LOST 14
 
+
 int main()
 {
    
@@ -37,6 +38,7 @@ int main()
     Texture2D menuTexture = LoadTexture("menu.png");
     Texture2D rulesTexture = LoadTexture("rules2.0.png");
     Texture2D lostTexture = LoadTexture("lost.png");
+    Texture2D upgradesTexture = LoadTexture("upgrade_menu.png");
     
     //carregando animações do personagem;
     Texture2D walkingLeft[4];
@@ -151,13 +153,14 @@ int main()
 
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
+    Vector2 selectorUpgrades = {(int) (upgradesTexture.width/2), (int) 550};
     bool PRESS_UP = false;
     bool PRESS_DOWN = false; 
     int mode = INITMENU; 
       
     while (!WindowShouldClose()){    
         
-        switch(mode){
+        switch(UPGRADE){
             case INITMENU:
                 if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
                     
@@ -350,7 +353,56 @@ int main()
                 EndMode2D();
                 break;
             case UPGRADE:
-                //código da escolha do upgrade no final de cada wave
+                if (IsKeyDown(KEY_UP) == true && selectorUpgrades.y != 550 && PRESS_UP == false) {
+                    
+                    selectorUpgrades.y -= 100;
+                    PRESS_UP = true;
+                       
+                }
+                if(IsKeyDown(KEY_UP) == false) {
+                    PRESS_UP = false;
+                }
+                if (IsKeyDown(KEY_DOWN) == true && selectorUpgrades.y != 850 && PRESS_DOWN == false) {
+                     
+                   selectorUpgrades.y += 100;
+                   PRESS_DOWN = true;
+                }
+                if(IsKeyDown(KEY_DOWN) == false) {
+                    PRESS_DOWN = false;
+                }
+
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 550){
+                   
+                    mode = GAME;
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 650){
+                    EndDrawing();
+                    mode = RULES;
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 750){
+                    EndDrawing();
+                    CloseWindow();
+
+                }
+                if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 850){
+                    EndDrawing();
+                    CloseWindow();
+
+                }
+                 
+                BeginDrawing();
+                ClearBackground(GRAY);
+                DrawTextureEx(upgradesTexture, (Vector2){200,7},0,0.75, RAYWHITE);
+                DrawCircleV(selectorUpgrades, 10, GOLD);
+
+                DrawText("Recuperar vida", (rulesTexture.width/2) -700 , 500, 80, WHITE);
+                DrawText("Adicionar novo espinho", (rulesTexture.width/2) -700 , 600, 80, WHITE);
+                DrawText("Aumentar velocidade ", (rulesTexture.width/2) -700 , 700, 80, WHITE);
+                DrawText("Aumentar a visao da camera ", (rulesTexture.width/2) -700 , 800, 80, WHITE);
+
+                EndDrawing();
                 break;
             case LOST:
                 BeginDrawing();
@@ -362,6 +414,8 @@ int main()
                 }
                 EndDrawing();
                 break;
+            
+
         }
 
         
@@ -375,6 +429,7 @@ int main()
     UnloadTexture(rulesTexture);
     UnloadTexture(lostTexture);
     UnloadPlayerAnimation(walkingLeft, walkingRight);
+    UnloadTexture(upgradesTexture);
     free(cars);
     CloseWindow();
           
