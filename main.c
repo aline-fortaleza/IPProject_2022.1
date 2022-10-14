@@ -395,20 +395,20 @@ int main()
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 640){
                     EndDrawing();
-                    generateNewRandomSpikes(&spike, &numberSpikes);
+                    spike = generateNewRandomSpikes(spike, &numberSpikes);
                     mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 740){
                     EndDrawing();
                     increasePlayerSpeed(&player);
-                    CloseWindow();
+                    mode = GAME;
 
                 }
                 if(IsKeyDown(KEY_ENTER) == true && selectorUpgrades.y == 840){
                     EndDrawing();
                     cam.zoom -= 0.1;
-                    CloseWindow();
+                    mode = GAME;
 
                 }
 
