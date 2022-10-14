@@ -148,7 +148,7 @@ int main()
     cam.rotation = 0;
     cam.zoom = 1.2;
     
-
+    Music music1=LoadMusicStream("Alan Walker - Faded.mp3");
     
     Vector2 selectorPosition = {(int) (menuTexture.width/2) +150, (int) 550 };
     bool PRESS_UP = false;
@@ -156,7 +156,8 @@ int main()
     int mode = INITMENU; 
       
     while (!WindowShouldClose()){    
-        
+        PlayMusicStream(music1);
+        UpdateMusicStream(music1); 
         switch(mode){
             case INITMENU:
                 if (IsKeyDown(KEY_UP) == true && selectorPosition.y != 550 && PRESS_UP == false) {
@@ -375,6 +376,7 @@ int main()
     UnloadTexture(rulesTexture);
     UnloadTexture(lostTexture);
     UnloadPlayerAnimation(walkingLeft, walkingRight);
+    UnloadMusicStream(music1);                            // Unload music stream  
     free(cars);
     CloseWindow();
           
