@@ -483,7 +483,7 @@ int main()
     free(cars);
     free(spike);
     CloseAudioDevice();
-    CloseWindow();
+     CloseWindow();
           
     return 0;
 }
